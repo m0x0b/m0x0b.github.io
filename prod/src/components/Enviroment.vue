@@ -46,6 +46,7 @@ export default {
                 0.24, 0.24, 0.2, 0.27, 0.35
             ],
             reveal: false,
+            intro: true,
         };
     },
     watch: {
@@ -269,15 +270,13 @@ export default {
             reflect3.rotation.z += 0.001;
             reflect4.rotation.z += 0.001;
             //Start
-            reflect0.scale.x = Math.sin(time * 0.3 + 10) / 5;
-            reflect1.scale.y = Math.sin(time * 0.3 + 20) / 2;
-            reflect2.scale.y = Math.sin(time * 0.3 + 30) / 2;
-            reflect3.scale.x = Math.sin(time * 0.3 + 40) / 2;
-            reflect4.scale.x = Math.sin(time * 0.3 + 50) / 2;
+
             //End
             composer.render(scene, camera);
         }
+        
         animate();
+        this.cross();
 
     },
     methods: {
@@ -285,6 +284,23 @@ export default {
             setTimeout(() => {
                 this.reveal = true;
             }, 2000);
+        },
+        cross() {
+            let time = { s: 0 }
+            let timeNew = { s: 2 * Math.PI }
+            gsap.to(time, {
+                s: timeNew.s,
+                onUpdate: () => {
+                    this.disc0.scale.x = Math.sin(time.s + Math.PI/4) / 8;
+                    this.disc1.scale.y = Math.sin(time.s + Math.PI) / 2;
+                    this.disc2.scale.y = Math.sin(time.s / 2) / 2;
+                    this.disc3.scale.x = Math.sin(time.s + Math.PI*3) / 1.5;
+                    this.disc4.scale.x = Math.sin(time.s + Math.PI/2);
+                },
+                duration: 20,
+                ease: "linear",
+                repeat: -1,
+            });
         },
         prevScene() {
             let d
