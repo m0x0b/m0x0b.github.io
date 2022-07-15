@@ -257,6 +257,8 @@ export default {
         reflect3.rotation.z = Math.random() * 10
         reflect4.rotation.z = Math.random() * 10
 
+        this.revealScene();
+
         function render() {
             const time = performance.now() * 0.0005;
             water.material.uniforms['time'].value += 1.0 / 600.0;
