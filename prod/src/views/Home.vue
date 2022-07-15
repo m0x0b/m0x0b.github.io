@@ -1,4 +1,5 @@
 <template>
+<div class="overflow-x-hidden">
     <div class="absolute w-full h-full top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
 
     <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2">
@@ -15,6 +16,8 @@
         &nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2626<br />
     </p>
+
+    </div>
 
 </template>
 
