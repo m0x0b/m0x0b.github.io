@@ -1,5 +1,5 @@
 <template>
-    <div id="container" class="top-0 absolute" style="z-index: -1"></div>
+    <div id="container" class="top-0 fixed" style="z-index: -1"></div>
     <div class="bg-white fixed top-0 left-0 w-screen h-full transition-all duration-[5s]"
         :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
 </template>
@@ -73,8 +73,8 @@ export default {
         };
 
         container = document.getElementById('container');
-        renderer = new THREE.WebGLRenderer();
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer = new THREE.WebGLRenderer({ antialias: false });
+        renderer.setPixelRatio(window.devicePixelRatio * 0.6);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         container.appendChild(renderer.domElement);
@@ -117,19 +117,20 @@ export default {
 
         water.rotation.x = - Math.PI / 2;
 
+        /*
         const bokehPass = new BokehPass(scene, camera, {
             focus: 1.0,
             aperture: 0,
             maxblur: 0.01,
             width: window.innerWidth,
             height: window.innerHeight
-        });
+        });*/
 
         scene.add(water);
         composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
         composer.addPass(bloomPass);
-        composer.addPass(bokehPass);
+        //composer.addPass(bokehPass);
 
         for (let i = 0; i < this.scenes.length; i++) {
             let texture = this.scenes[i].img;

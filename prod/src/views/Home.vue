@@ -1,6 +1,6 @@
 <template>
 
-        <div class="absolute w-screen h-full top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
+        <div class="fixed w-screen h-screen top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
 
         <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2">
             <h2 class="text-md md:text-xl font-[GT] absolute -top-4">
@@ -18,6 +18,13 @@
             &nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;<br />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2626<br />
         </p>
+
+
+        <div class="absolute h-screen overflow-y-visible">
+        <div class="w-full mt-[1000px]">
+            <img src="pieces/5-0.jpg" class="w-[600px] mx-auto" />
+        </div>
+        </div>
 
 
 </template>
