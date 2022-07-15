@@ -1,7 +1,7 @@
 <template>
     <div id="container" class="top-0 absolute" style="z-index: -1"></div>
-    <div class="bg-white fixed top-0 left-0 w-full h-full transition-all duration-[5s]"
-        :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
+    <!--<div class="bg-white fixed top-0 left-0 w-full h-full transition-all duration-[5s]"
+        :class="reveal ? 'opacity-0' : 'opacity-100'"></div>-->
 </template>
 
 <script type="ts">
