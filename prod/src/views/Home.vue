@@ -3,7 +3,7 @@
         <div class="absolute w-screen h-full top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
 
         <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2">
-            <h2 class="text-md md:text-xl font-[GT]">
+            <h2 class="text-md md:text-xl font-[GT] absolute -top-4">
                 <scramble :newText="stamp"></scramble>
             </h2>
             <h1 class="text-5xl md:text-8xl text-black">NULL IDEAL</h1>
