@@ -256,30 +256,20 @@ export default {
             reflect4.rotation.z += 0.001;
             composer.render(scene, camera);
         }
-
-
         animate();
-
-        setTimeout(() => {
-            this.nextScene()
-        }, 2000);
-
-
         setTimeout(() => {
             this.nextScene()
         }, 4000);
-
-                setTimeout(() => {
-            this.nextScene()
-        }, 6000);
-
-
-
-                setTimeout(() => {
+        setTimeout(() => {
             this.nextScene()
         }, 8000);
+        setTimeout(() => {
+            this.nextScene()
+        }, 12000);
+        setTimeout(() => {
+            this.nextScene()
+        }, 16000);
         this.revealScene();
-
     },
     methods: {
         revealScene() {
@@ -323,7 +313,7 @@ export default {
                 onUpdate: () => {
                     this.bloom.strength = bloomCurrent.s
                 },
-                duration: 2,
+                duration: 3,
                 ease: "power1.out"
             });
             this.curScene -= 1;
@@ -371,7 +361,7 @@ export default {
                 onUpdate: () => {
                     this.bloom.strength = bloomCurrent.s
                 },
-                duration: 2,
+                duration: 3,
                 ease: "power1.out"
             });
             this.curScene += 1;
