@@ -23,7 +23,8 @@
 
         <div class="absolute h-screen w-full overflow-y-scroll">
         <div class="w-full mt-[1000px]">
-            <img src="/pieces/5-0.jpg" class="w-[600px] mx-auto" />
+            <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+            <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
         </div>
         </div>
 
