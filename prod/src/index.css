@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: "GT";
-    src: url("fonts/GT-America-Expanded-Thin.woff2") format("woff2"),
-    url("fonts.GT-America-Expanded-Thin.woff") format("woff");
+    src: url("./fonts/GT-America-Expanded-Thin.woff2") format("woff2"),
+    url("./fonts.GT-America-Expanded-Thin.woff") format("woff");
     font-style: normal;
     font-stretch: normal;
 }
