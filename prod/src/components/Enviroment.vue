@@ -1,5 +1,7 @@
 <template>
     <div id="container" class="top-0 absolute" style="z-index: -1"></div>
+    <div class="bg-white fixed top-0 left-0 w-full h-full transition-all duration-[5s]"
+        :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
 </template>
 
 <script type="ts">
@@ -42,7 +44,8 @@ export default {
             bloom: null,
             bloomScenes: [
                 0.24, 0.24, 0.2, 0.27, 0.35
-            ]
+            ],
+            reveal: false,
         };
     },
     watch: {
@@ -67,8 +70,6 @@ export default {
             bloomThreshold: 0,
             bloomRadius: 0.1
         };
-
-
 
         container = document.getElementById('container');
         renderer = new THREE.WebGLRenderer();
@@ -205,7 +206,7 @@ export default {
                 object.scale.set(0.5, 0.5, 0.5);
             },
             (xhr) => {
-                console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                if (xhr.loaded == xhr.total) this.revealScene();
             },
             (error) => {
                 console.log(error)
@@ -256,44 +257,16 @@ export default {
             composer.render(scene, camera);
         }
 
-        setTimeout(() => {
-            this.nextScene()
-        }, 2000);
-
-
-        setTimeout(() => {
-            this.nextScene()
-        }, 4000);
-
-        setTimeout(() => {
-            this.nextScene()
-        }, 6000);
-
-        setTimeout(() => {
-            this.nextScene()
-        }, 8000);
-
-        setTimeout(() => {
-            this.prevScene()
-        }, 10000);
-
-        setTimeout(() => {
-            this.prevScene()
-        }, 12000);
-
-        setTimeout(() => {
-            this.prevScene()
-        }, 14000);
-
-
-        setTimeout(() => {
-            this.prevScene()
-        }, 16000);
 
         animate();
+
     },
     methods: {
-
+        revealScene() {
+            setTimeout(() => {
+                this.reveal = true;
+            }, 2000);
+        },
         prevScene() {
             let d
             if (this.curScene == 0) {
