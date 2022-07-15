@@ -1,7 +1,7 @@
 <template>
     <div id="container" class="top-0 absolute" style="z-index: -1"></div>
-    <!--<div class="bg-white fixed top-0 left-0 w-full h-full transition-all duration-[5s]"
-        :class="reveal ? 'opacity-0' : 'opacity-100'"></div>-->
+    <div class="bg-white fixed top-0 left-0 w-full h-full transition-all duration-[5s]"
+        :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
 </template>
 
 <script type="ts">
@@ -259,6 +259,26 @@ export default {
 
 
         animate();
+
+        setTimeout(() => {
+            this.nextScene()
+        }, 2000);
+
+
+        setTimeout(() => {
+            this.nextScene()
+        }, 4000);
+
+                setTimeout(() => {
+            this.nextScene()
+        }, 6000);
+
+
+
+                setTimeout(() => {
+            this.nextScene()
+        }, 8000);
+        this.revealScene();
 
     },
     methods: {
