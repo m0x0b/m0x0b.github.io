@@ -22,7 +22,7 @@
 
         <div class="absolute h-screen overflow-y-visible">
         <div class="w-full mt-[1000px]">
-            <img src="pieces/5-0.jpg" class="w-[600px] mx-auto" />
+            <img src="/pieces/5-0.jpg" class="w-[600px] mx-auto" />
         </div>
         </div>
 
