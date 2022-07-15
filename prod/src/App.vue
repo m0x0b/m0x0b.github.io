@@ -5,9 +5,10 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+
+
   <enviroment :section="section"></enviroment>
 
-  
   <router-view v-slot="{ Component }">
     <component :is="Component" @changeTab="handleChangeTab" />
   </router-view>

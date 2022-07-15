@@ -1,6 +1,6 @@
 <template>
-    <div class="overflow-x-hidden">
-        <div class="absolute w-full h-full top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
+
+        <div class="absolute w-screen h-full top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
 
         <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2">
             <h2 class="text-md md:text-xl font-[GT]">
@@ -9,7 +9,7 @@
             <h1 class="text-5xl md:text-8xl text-black">NULL IDEAL</h1>
         </div>
 
-        <p class="absolute bottom-4 right-4 w-[180px] text-[8px] leading-[9px]">
+        <p class="fixed bottom-4 right-4 w-[180px] text-[8px] leading-[9px]">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9ca4<br />
             &nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ce47&nbsp;&nbsp;7fa6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
             &nbsp;&nbsp;&nbsp;dd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;53&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bc&nbsp;&nbsp;&nbsp;&nbsp;90<br />
@@ -19,7 +19,6 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2626<br />
         </p>
 
-    </div>
 
 </template>
 
