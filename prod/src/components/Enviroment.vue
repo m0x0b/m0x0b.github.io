@@ -63,6 +63,7 @@ export default {
         let camera, scene, renderer, composer;
         let controls, water, sun;
         let reflect0, reflect1, reflect2, reflect3, reflect4;
+        let shell;
 
         const params = {
             exposure: 1,
@@ -206,6 +207,8 @@ export default {
                 scene.add(object)
 
                 object.scale.set(0.5, 0.5, 0.5);
+
+                shell = object;
             },
             (xhr) => {
                 if (xhr.loaded == xhr.total) this.revealScene();
@@ -248,6 +251,12 @@ export default {
             render();
         }
 
+        reflect0.rotation.z = Math.random() * 10
+        reflect1.rotation.z = Math.random() * 10
+        reflect2.rotation.z = Math.random() * 10
+        reflect3.rotation.z = Math.random() * 10
+        reflect4.rotation.z = Math.random() * 10
+
         function render() {
             const time = performance.now() * 0.0005;
             water.material.uniforms['time'].value += 1.0 / 600.0;
@@ -256,22 +265,17 @@ export default {
             reflect2.rotation.z += 0.001;
             reflect3.rotation.z += 0.001;
             reflect4.rotation.z += 0.001;
+            //Start
+            reflect0.scale.x = Math.sin(time * 0.3 + 10) / 5;
+            reflect1.scale.y = Math.sin(time * 0.3 + 20) / 2;
+            reflect2.scale.y = Math.sin(time * 0.3 + 30) / 2;
+            reflect3.scale.x = Math.sin(time * 0.3 + 40) / 2;
+            reflect4.scale.x = Math.sin(time * 0.3 + 50) / 2;
+            //End
             composer.render(scene, camera);
         }
         animate();
-        setTimeout(() => {
-            this.nextScene()
-        }, 4000);
-        setTimeout(() => {
-            this.nextScene()
-        }, 8000);
-        setTimeout(() => {
-            this.nextScene()
-        }, 12000);
-        setTimeout(() => {
-            this.nextScene()
-        }, 16000);
-        this.revealScene();
+
     },
     methods: {
         revealScene() {
@@ -354,7 +358,7 @@ export default {
                     d.scale.y = discSizeCurrent.s
                 },
                 duration: 2,
-                ease: "power1.in"
+                ease: "power1.in",
             });
             let bloomCurrent = { s: this.bloom.strength }
             let bloomNew = { s: this.bloomScenes[this.curScene + 1] }
@@ -364,7 +368,8 @@ export default {
                     this.bloom.strength = bloomCurrent.s
                 },
                 duration: 3,
-                ease: "power1.out"
+                ease: "power1.out",
+
             });
             this.curScene += 1;
         }
