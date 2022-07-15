@@ -89,7 +89,9 @@ export default {
 
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 2000);
-        camera.position.set(0, 160, 0);
+
+        if (window.innerWidth > 1200) camera.position.set(0, 160, 0);
+        else camera.position.set(0, 190, 0);
 
         sun = new THREE.Vector3();
 
