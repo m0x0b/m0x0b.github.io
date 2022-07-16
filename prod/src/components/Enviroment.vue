@@ -31,11 +31,11 @@ export default {
             width: window.innerWidth + 100,
             height: window.innerHeight + 100,
             scenes: [
+                { img: "textures/0.jpg" },
                 { img: "textures/1.jpg" },
                 { img: "textures/2.jpg" },
                 { img: "textures/3.jpg" },
                 { img: "textures/4.jpg" },
-                { img: "textures/5.jpg" },
             ],
             disc0: null,
             disc1: null,
@@ -54,10 +54,18 @@ export default {
     },
     watch: {
         section: {
-            handler: function (val) {
+            handler: function (next, prev) {
+                /*
                 if (val > this.curScene) this.nextScene()
                 else this.prevScene()
                 this.curScene = val
+                */
+               if (prev == 1 && next == 0) this.startCross();
+               if (prev == 0 && next == 1) this.stopCross();
+               if (prev == 1 && next == 2) this.nextScene();
+               if (prev == 2 && next == 3) this.nextScene();
+               if (prev == 3 && next == 4) {this.nextScene()
+               console.log("YOOOOO")};
             }
         },
     },
@@ -298,15 +306,10 @@ export default {
             duration: 20,
             ease: "linear",
             repeat: -1,
-            paused: true,
+            paused: false,
         });
 
         animate();
-        this.startCross();
-
-        setTimeout(() => {
-            this.stopCross();
-        }, 10000);
 
     },
     methods: {
@@ -316,7 +319,9 @@ export default {
             }, 2000);
         },
         startCross() {
-            this.cross.play(0);
+            console.log("YERRRRR");
+                      this.cross.pause(); 
+         this.cross.restart();
         },
         stopCross() {
             let discSizeCurrent = { s: this.disc0.scale.x }
@@ -329,9 +334,11 @@ export default {
                 },
                 duration: 2,
                 ease: "power1.out",
-                onComplete: () => this.cross.pause(0)
+                onComplete: () => {
+                    this.cross.pause(); 
+                }
             });
-            this.cross.timeScale(1).pause();
+  
         },
         prevScene() {
             let d

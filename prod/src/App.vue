@@ -7,7 +7,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <enviroment :section="section"></enviroment>
   <router-view v-slot="{ Component }">
-    <component :is="Component" @changeTab="handleChangeTab" />
+    <component :is="Component" @sectionChange="handleSectionChange" />
   </router-view>
 </template>
 
@@ -26,5 +26,10 @@ export default {
   components: {
     Enviroment
   },
+  methods: {
+    handleSectionChange(section) {
+      this.section = section;
+    }
+  }
 }
 </script>
