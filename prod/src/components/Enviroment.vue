@@ -247,7 +247,7 @@ export default {
 
         function onWindowResize() {
 
-            if (this.width != window.innerWidth + 100) {
+      
                             console.log("yoooooo \n\n\n")
                 this.width = window.innerWidth + 100;
                 this.height = window.innerHeight + 100;
@@ -255,7 +255,7 @@ export default {
                 camera.updateProjectionMatrix();
                 renderer.setSize(this.width , this.height);
 
-            }
+            
         }
 
         function animate() {
