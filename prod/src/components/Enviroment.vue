@@ -247,15 +247,13 @@ export default {
 
         function onWindowResize() {
 
-      
-                            console.log("yoooooo \n\n\n")
+            if (this.width != window.innerWidth + 100) {
                 this.width = window.innerWidth + 100;
                 this.height = window.innerHeight + 100;
                 camera.aspect = this.width  / this.height;
                 camera.updateProjectionMatrix();
                 renderer.setSize(this.width , this.height);
-
-            
+            }
         }
 
         function animate() {
