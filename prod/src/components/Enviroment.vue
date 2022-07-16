@@ -246,12 +246,15 @@ export default {
         window.addEventListener('resize', onWindowResize);
 
         function onWindowResize() {
+
             if (this.width != window.innerWidth + 100) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
+                            console.log("yoooooo \n\n\n")
                 this.width = window.innerWidth + 100;
                 this.height = window.innerHeight + 100;
+                camera.aspect = this.width  / this.height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(this.width , this.height);
+
             }
         }
 
