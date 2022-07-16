@@ -1,5 +1,5 @@
 <template>
-    <div id="container" class="top-0 fixed" style="z-index: -1"></div>
+    <div id="container" class="top-[-50px] left-[-50px] fixed" style="z-index: -1" :class="'width-[' + width + 'px]', 'height-' + height + 'px]'"></div>
     <div class="bg-white fixed top-0 left-0 w-screen h-full transition-all duration-[5s]"
         :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
 </template>
@@ -28,6 +28,8 @@ export default {
     },
     data() {
         return {
+            width: window.innerWidth + 100,
+            height: window.innerHeight + 100,
             scenes: [
                 { img: "textures/1.jpg" },
                 { img: "textures/2.jpg" },
@@ -47,6 +49,7 @@ export default {
             ],
             reveal: false,
             intro: true,
+            cross: null,
         };
     },
     watch: {
@@ -76,13 +79,13 @@ export default {
         container = document.getElementById('container');
         renderer = new THREE.WebGLRenderer({ antialias: false });
         renderer.setPixelRatio(window.devicePixelRatio * 0.6);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(this.width, this.height);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         container.appendChild(renderer.domElement);
 
         const renderScene = new RenderPass(scene, camera);
 
-        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(this.width, this.height), 1.5, 0.4, 0.85);
         bloomPass.threshold = params.bloomThreshold;
         bloomPass.strength = params.bloomStrength;
         bloomPass.radius = params.bloomRadius;
@@ -90,7 +93,7 @@ export default {
         this.bloom = bloomPass
 
         scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 1, 2000);
+        camera = new THREE.PerspectiveCamera(20, this.width / this.height, 1, 2000);
 
         if (window.innerWidth > 1200) camera.position.set(0, 160, 0);
         else camera.position.set(0, 220, 0);
@@ -243,9 +246,13 @@ export default {
         window.addEventListener('resize', onWindowResize);
 
         function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            if (this.width != window.innerWidth + 100) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                this.width = window.innerWidth + 100;
+                this.height = window.innerHeight + 100;
+            }
         }
 
         function animate() {
@@ -274,9 +281,31 @@ export default {
             //End
             composer.render(scene, camera);
         }
-        
+
+        let time = { s: 0 }
+        let timeNew = { s: 2 * Math.PI }
+
+        this.cross = gsap.to(time, {
+            s: timeNew.s,
+            onUpdate: () => {
+                this.disc0.scale.x = Math.sin(time.s + Math.PI / 4) / 8;
+                this.disc1.scale.y = Math.sin(time.s + Math.PI) / 2;
+                this.disc2.scale.y = Math.sin(time.s / 2) / 2;
+                this.disc3.scale.x = Math.sin(time.s + Math.PI * 3) / 1.5;
+                this.disc4.scale.x = Math.sin(time.s + Math.PI / 2);
+            },
+            duration: 20,
+            ease: "linear",
+            repeat: -1,
+            paused: true,
+        });
+
         animate();
-        this.cross();
+        this.startCross();
+
+        setTimeout(() => {
+            this.stopCross();
+        }, 10000);
 
     },
     methods: {
@@ -285,22 +314,23 @@ export default {
                 this.reveal = true;
             }, 2000);
         },
-        cross() {
-            let time = { s: 0 }
-            let timeNew = { s: 2 * Math.PI }
-            gsap.to(time, {
-                s: timeNew.s,
+        startCross() {
+            this.cross.play(0);
+        },
+        stopCross() {
+            let discSizeCurrent = { s: this.disc0.scale.x }
+            let discSizeNew = { s: 1 }
+            gsap.to(discSizeCurrent, {
+                s: discSizeNew.s,
                 onUpdate: () => {
-                    this.disc0.scale.x = Math.sin(time.s + Math.PI/4) / 8;
-                    this.disc1.scale.y = Math.sin(time.s + Math.PI) / 2;
-                    this.disc2.scale.y = Math.sin(time.s / 2) / 2;
-                    this.disc3.scale.x = Math.sin(time.s + Math.PI*3) / 1.5;
-                    this.disc4.scale.x = Math.sin(time.s + Math.PI/2);
+                    this.disc0.scale.x = discSizeCurrent.s
+                    this.disc0.scale.y = discSizeCurrent.s
                 },
-                duration: 20,
-                ease: "linear",
-                repeat: -1,
+                duration: 2,
+                ease: "power1.out",
+                onComplete: () => this.cross.pause(0)
             });
+            this.cross.timeScale(1).pause();
         },
         prevScene() {
             let d
