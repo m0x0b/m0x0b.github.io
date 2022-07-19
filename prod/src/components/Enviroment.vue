@@ -45,7 +45,7 @@ export default {
             curScene: 0,
             bloom: null,
             bloomScenes: [
-                0.24, 0.24, 0.2, 0.27, 0.35
+                0.24, 0.24, 0.2, 0.15, 0.35
             ],
             reveal: false,
             intro: true,
@@ -60,12 +60,19 @@ export default {
                 else this.prevScene()
                 this.curScene = val
                 */
+               //console.log(next, prev)
                if (prev == 1 && next == 0) this.startCross();
                if (prev == 0 && next == 1) this.stopCross();
+
                if (prev == 1 && next == 2) this.nextScene();
                if (prev == 2 && next == 3) this.nextScene();
-               if (prev == 3 && next == 4) {this.nextScene()
-               console.log("YOOOOO")};
+               if (prev == 3 && next == 4) this.nextScene();
+               if (prev == 4 && next == 5) this.nextScene();
+
+               if (prev == 2 && next == 1) this.prevScene();
+               if (prev == 3 && next == 2) this.prevScene();
+               if (prev == 4 && next == 3) this.prevScene();
+               if (prev == 5 && next == 4) this.prevScene();
             }
         },
     },
@@ -297,7 +304,7 @@ export default {
         this.cross = gsap.to(time, {
             s: timeNew.s,
             onUpdate: () => {
-                this.disc0.scale.x = Math.sin(time.s + Math.PI / 4) / 8;
+                this.disc0.scale.x = Math.sin(time.s) / 6;
                 this.disc1.scale.y = Math.sin(time.s + Math.PI) / 2;
                 this.disc2.scale.y = Math.sin(time.s / 2) / 2;
                 this.disc3.scale.x = Math.sin(time.s + Math.PI * 3) / 1.5;
@@ -319,9 +326,26 @@ export default {
             }, 2000);
         },
         startCross() {
-            console.log("YERRRRR");
-                      this.cross.pause(); 
-         this.cross.restart();
+
+            // TODO:  Fix stransition
+            let discSizeCurrent = { s: this.disc0.scale.x }
+            let discSizeNew = { s: 0 }
+            gsap.to(discSizeCurrent, {
+                s: discSizeNew.s,
+                onUpdate: () => {
+                    this.disc0.scale.x = discSizeCurrent.s
+                    this.disc0.scale.y = discSizeCurrent.s
+                },
+                duration: 2,
+                ease: "power1.out",
+                onComplete: () => {
+                                this.cross.pause(); 
+            this.cross.restart();
+                }
+            });
+
+            // set gold to be 1/4 in transition then on complete restart cross.
+
         },
         stopCross() {
             let discSizeCurrent = { s: this.disc0.scale.x }
@@ -426,8 +450,8 @@ export default {
                 },
                 duration: 3,
                 ease: "power1.out",
-
             });
+            console.log(this.disc4.scale.x);
             this.curScene += 1;
         }
     },

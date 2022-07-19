@@ -3,7 +3,8 @@
 
     <div class="fixed w-screen h-screen top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
 
-    <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2 pointer-events-none transition-all duration-500" :class="fade?'opacity-0' : 'opacity-100'">
+    <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2 pointer-events-none transition-all duration-500"
+        :class="fade ? 'opacity-0' : 'opacity-100'">
         <h2 class="text-md md:text-xl font-[GT] absolute -top-4">
             <scramble :newText="stamp"></scramble>
         </h2>
@@ -22,26 +23,30 @@
 
 
     <div class="absolute h-screen w-full overflow-y-scroll" @scroll="handleScroll" ref="container">
-        <div class="w-full mt-[1000px]">
+        <div class="w-full mt-[100vh]">
             <div ref="section0">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+                <img src="/pieces/0-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/0-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/0-2.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/0-3.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/1-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/1-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
             </div>
-            <div ref="section1" class="mt-64">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+            <div ref="section1" class="mt-64 md:mt-72">
+                <img src="/pieces/2-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/2-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
             </div>
-            <div ref="section2" class="mt-64">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+            <div ref="section2" class="mt-64 md:mt-72">
+                <img src="/pieces/3-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/3-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
             </div>
-            <div ref="section3" class="mt-64">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+            <div ref="section3" class="mt-64 md:mt-72">
+                <img src="/pieces/4-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/4-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
             </div>
-            <div ref="section4" class="mt-64">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[600px] mx-auto my-4" />
+            <div ref="section4" class="mt-64 md:mt-72">
+                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
             </div>
         </div>
     </div>
@@ -64,24 +69,28 @@ export default {
     },
     methods: {
         handleScroll() {
-            console.log(this.$refs.section1.offsetTop);
-            // Any code to be executed when the window is scrolled
-            if(this.$refs.container.scrollTop <= 0) {
+            if (this.$refs.container.scrollTop <= 0) {
                 this.fade = false;
                 this.$emit('sectionChange', 0);
             }
-            if(this.$refs.container.scrollTop > 0) {
+            if (this.$refs.container.scrollTop > 0) {
                 this.fade = true;
+            }
+            if (this.$refs.container.scrollTop > window.innerHeight / 3) {
+
                 this.$emit('sectionChange', 1);
             }
-           if(this.$refs.container.scrollTop >= this.$refs.section1.offsetTop) {
+            if (this.$refs.container.scrollTop > this.$refs.section1.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 2);
             }
-            if(this.$refs.container.scrollTop >= this.$refs.section2.offsetTop) {
+            if (this.$refs.container.scrollTop > this.$refs.section2.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 3);
             }
-            if(this.$refs.container.scrollTop >= this.$refs.section3.offsetTop) {
+            if (this.$refs.container.scrollTop > this.$refs.section3.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 4);
+            }
+            if (this.$refs.container.scrollTop > this.$refs.section4.offsetTop - window.innerHeight / 1.3) {
+                this.$emit('sectionChange', 5);
             }
         }
     },
