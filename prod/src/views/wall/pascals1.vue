@@ -17,7 +17,7 @@
                 </router-link>
                 <div class="py-24 pb-64 lg:py-0 lg:pb-0 px-4">
                     <h1 class="text-4xl">Pascals 1</h1>
-                    <h3 class="font-[GT] mt-4">Unix Timestamp: 1652951432000</h3>
+                    <h3 class="font-[GT] mt-4">Unix Timestamp: 1639819092000</h3>
                     <h3 class="font-[GT]">Dimensions: 36" x 36"</h3>
                     <h3 class="font-[GT]">Medium: Print on Silk Canvas</h3>
                     <h3 class="font-[GT]">Status: No Owner</h3>
