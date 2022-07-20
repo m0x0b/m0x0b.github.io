@@ -22,6 +22,22 @@
     </p>
 
     <div class="absolute h-screen w-full overflow-y-scroll" @scroll="handleScroll" ref="container">
+
+        <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase transition-all duration-500 pointer-events-none"
+            :class="inquire ? 'opacity-100 hidden' : 'opacity-0 visible'">
+
+            <div class="pointer-events-none select-none">
+                <h1 v-for="(t, index) in titles" class="text-5xl whitespace-nowrap transition-all duration-500"
+                    :class="index == active ? 'opacity-100' : 'opacity-20'">
+                    {{ t }}
+                </h1>
+            </div>
+
+            <router-link :to="links[active]"
+                class="text-xl cursor-pointer absolute left-0 mt-4 border border-black px-8 py-2 text-black font-[GT]">
+                Inquire</router-link>
+        </div>
+
         <div class="w-full mt-[100vh]">
             <div ref="section0" class="flex flex-col text-xl white">
                 <router-link :to="links[0]">
@@ -74,23 +90,11 @@
                 </router-link>
             </div>
         </div>
+
+
     </div>
 
 
-    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase transition-all duration-500"
-        :class="inquire ? 'opacity-100 hidden' : 'opacity-0 visible'">
-
-        <div class="pointer-events-none">
-            <h1 v-for="(t, index) in titles" class="text-5xl whitespace-nowrap transition-all duration-500"
-                :class="index == active ? 'opacity-100' : 'opacity-20'">
-                {{ t }}
-            </h1>
-        </div>
-
-        <router-link :to="links[active]"
-            class="text-xl cursor-pointer absolute left-0 mt-4 border border-black px-8 py-2 text-black font-[GT]">
-            Inquire</router-link>
-    </div>
 
 </template>
 
