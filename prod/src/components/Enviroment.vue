@@ -15,7 +15,6 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { Water } from 'three/examples/jsm/objects/Water';
 import { Sky } from 'three/examples/jsm/objects/Sky';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
 
 export default {
     name: "Enviroment",
@@ -94,7 +93,7 @@ export default {
 
         container = document.getElementById('container');
         renderer = new THREE.WebGLRenderer({ antialias: false });
-        renderer.setPixelRatio(window.devicePixelRatio * 0.6);
+        renderer.setPixelRatio(window.devicePixelRatio * 0.55);
         renderer.setSize(this.width, this.height);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         container.appendChild(renderer.domElement);
@@ -137,20 +136,10 @@ export default {
 
         water.rotation.x = - Math.PI / 2;
 
-        /*
-        const bokehPass = new BokehPass(scene, camera, {
-            focus: 1.0,
-            aperture: 0,
-            maxblur: 0.01,
-            width: window.innerWidth,
-            height: window.innerHeight
-        });*/
-
         scene.add(water);
         composer = new EffectComposer(renderer);
         composer.addPass(new RenderPass(scene, camera));
         composer.addPass(bloomPass);
-        //composer.addPass(bokehPass);
 
         for (let i = 0; i < this.scenes.length; i++) {
             let texture = this.scenes[i].img;
@@ -346,16 +335,16 @@ export default {
                 }
             });
 
-            this.disc1.scale.y  = 1;
+            this.disc1.scale.y = 1;
             this.disc1.scale.x = 1;
 
-            this.disc2.scale.y  = 1;
+            this.disc2.scale.y = 1;
             this.disc2.scale.x = 1;
 
-            this.disc3.scale.y  = 1;
+            this.disc3.scale.y = 1;
             this.disc3.scale.x = 1;
 
-            this.disc4.scale.y  = 1;
+            this.disc4.scale.y = 1;
             this.disc4.scale.x = 1;
 
             let disc1SizeCurrent = { s: this.disc1.scale.y }
