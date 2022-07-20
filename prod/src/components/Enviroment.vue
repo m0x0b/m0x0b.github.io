@@ -31,11 +31,11 @@ export default {
             width: window.innerWidth + 100,
             height: window.innerHeight + 100,
             scenes: [
-                { img: "textures/0.jpg" },
-                { img: "textures/1.jpg" },
-                { img: "textures/2.jpg" },
-                { img: "textures/3.jpg" },
-                { img: "textures/4.jpg" },
+                { img: "../textures/0.jpg" },
+                { img: "../textures/1.jpg" },
+                { img: "../textures/2.jpg" },
+                { img: "../textures/3.jpg" },
+                { img: "../textures/4.jpg" },
             ],
             disc0: null,
             disc1: null,
@@ -87,7 +87,7 @@ export default {
 
         container = document.getElementById('container');
         renderer = new THREE.WebGLRenderer({ antialias: false });
-        renderer.setPixelRatio(window.devicePixelRatio * 0.55);
+        renderer.setPixelRatio(window.devicePixelRatio * 0.52);
         renderer.setSize(this.width, this.height);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         container.appendChild(renderer.domElement);
@@ -114,9 +114,9 @@ export default {
         water = new Water(
             waterGeometry,
             {
-                textureWidth: 360,
-                textureHeight: 360,
-                waterNormals: new THREE.TextureLoader().load('textures/1612.jpeg', function (texture) {
+                textureWidth: 320,
+                textureHeight: 320,
+                waterNormals: new THREE.TextureLoader().load('../textures/1612.jpeg', function (texture) {
                     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 }),
                 sunDirection: new THREE.Vector3(),
@@ -199,7 +199,7 @@ export default {
         const objLoader = new OBJLoader()
 
         objLoader.load(
-            'nr.obj',
+            '../nrr.obj',
             (object) => {
                 object.traverse(function (child) {
                     if (child.isMesh) {

@@ -6,7 +6,7 @@
     <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2 pointer-events-none transition-all duration-500"
         :class="fade ? 'opacity-0' : 'opacity-100'">
         <h2 class="text-md md:text-xl font-[GT] absolute -top-4">
-            <scramble :newText="stamp"></scramble>
+            {{ stamp }}
         </h2>
         <h1 class="text-5xl md:text-8xl text-black">NULL IDEAL</h1>
     </div>
@@ -24,70 +24,77 @@
     <div class="absolute h-screen w-full overflow-y-scroll" @scroll="handleScroll" ref="container">
         <div class="w-full mt-[100vh]">
             <div ref="section0" class="flex flex-col text-xl white">
-                <h1 class="text-center uppercase md:hidden">Pascals 0 & 1</h1>
-                <img src="/pieces/1-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <img src="/pieces/1-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                <router-link :to="links[0]">
+                    <h1 class="text-center uppercase md:hidden">Pascals 0 & 1</h1>
+                    <img src="/pieces/1-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <img src="/pieces/1-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                </router-link>
             </div>
             <div ref="section1" class="mt-72">
-                <h1 class="text-center uppercase text-xl md:hidden">Detritus 0 & 1</h1>
-                <img src="/pieces/2-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <img src="/pieces/2-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                <router-link :to="links[1]">
+                    <h1 class="text-center uppercase text-xl md:hidden">Detritus 0 & 1</h1>
+                    <img src="/pieces/2-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <img src="/pieces/2-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                </router-link>
             </div>
             <div ref="section2" class="mt-72">
-                <h1 class="text-center uppercase text-xl md:hidden">After Image 0 & 1</h1>
-                <img src="/pieces/3-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <img src="/pieces/3-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                <router-link :to="links[2]">
+                    <h1 class="text-center uppercase text-xl md:hidden">After Image 0 & 1</h1>
+                    <img src="/pieces/3-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <img src="/pieces/3-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                </router-link>
             </div>
             <div ref="section3" class="mt-72">
-                <h1 class="text-center uppercase text-xl md:hidden">Polyethylene 0 & 1</h1>
-                <img src="/pieces/4-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <img src="/pieces/4-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                <router-link :to="links[3]">
+                    <h1 class="text-center uppercase text-xl md:hidden">Polyethylene 0 & 1</h1>
+                    <img src="/pieces/4-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <img src="/pieces/4-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                </router-link>
             </div>
             <div ref="section4" class="mt-72 mb-32 text-xl md:mb-0">
-                <h1 class="text-center uppercase md:hidden">Pyrolysis 0 & 1</h1>
-                <img src="/pieces/5-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <img src="/pieces/5-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
-                <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                <router-link :to="links[4]">
+                    <h1 class="text-center uppercase md:hidden">Pyrolysis 0 & 1</h1>
+                    <img src="/pieces/5-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <img src="/pieces/5-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                    <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
+                </router-link>
             </div>
         </div>
     </div>
 
 
     <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase transition-all duration-500"
-        :class="inquire ? 'opacity-100' : 'opacity-0'">
+        :class="inquire ? 'opacity-100 hidden' : 'opacity-0 visible'">
 
-        <div>
+        <div class="pointer-events-none">
             <h1 v-for="(t, index) in titles" class="text-5xl whitespace-nowrap transition-all duration-500"
                 :class="index == active ? 'opacity-100' : 'opacity-20'">
                 {{ t }}
             </h1>
         </div>
 
-        <h1 class="text-xl cursor-pointer absolute left-0 mt-4 border border-black px-8 py-2 text-black font-[GT]">
-            Inquire</h1>
+        <router-link :to="links[active]"
+            class="text-xl cursor-pointer absolute left-0 mt-4 border border-black px-8 py-2 text-black font-[GT]">
+            Inquire</router-link>
     </div>
 
 </template>
 
 <script>
 import { RouterLink } from "vue-router";
-import Scramble from "../components/Scramble.vue";
 export default {
     name: "Home",
-    components: {
-        Scramble
-    },
     data() {
         return {
-            stamp: "",
+            stamp: "1654056634000",
             fade: false,
             inquire: false,
             titles: ["Pascals 0 & 1", "Detritus 0 & 1", "After Image 0 & 1", "Polyethylene 0 & 1", "Pyrolysis 0 & 1"],
-            links: [],
+            links: ["/wall/pascals0", "/wall/pascals1", "/wall/detritus0", "/wall/detritus1", "/wall/afterimage0", "/wall/afterimage1", "/wall/polyethylene0", "/wall/polyethylene1", "/wall/pyrolysis0", "/wall/pyrolysis1"],
             active: 0,
         }
     },
@@ -127,10 +134,5 @@ export default {
             }
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.stamp = "1654056634000";
-        }, 1500)
-    }
 }
 </script>
