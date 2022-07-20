@@ -55,12 +55,6 @@ export default {
     watch: {
         section: {
             handler: function (next, prev) {
-                /*
-                if (val > this.curScene) this.nextScene()
-                else this.prevScene()
-                this.curScene = val
-                */
-                //console.log(next, prev)
                 if (prev == 1 && next == 0) this.startCross();
                 if (prev == 0 && next == 1) this.stopCross();
 

@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="fixed w-screen h-screen top-0 left-0 bg-[#ffffff] bg-opacity-20"></div>
+    <div class="fixed w-screen h-screen top-0 left-0 bg-[#ffffff] bg-opacity-25"></div>
 
     <div class="absolute top-1/2 left-4 md:left-16 transform -translate-y-1/2 pointer-events-none transition-all duration-500"
         :class="fade ? 'opacity-0' : 'opacity-100'">
@@ -57,9 +57,18 @@
     </div>
 
 
-        <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase">
-        <h1 class="text-6xl">Pyrolysis 0 & 1</h1>
-        <h1 class="text-2xl cursor-pointer">Inquire</h1>
+    <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase transition-all duration-500"
+        :class="inquire ? 'opacity-100' : 'opacity-0'">
+
+        <div>
+            <h1 v-for="(t, index) in titles" class="text-5xl whitespace-nowrap transition-all duration-500"
+                :class="index == active ? 'opacity-100' : 'opacity-20'">
+                {{ t }}
+            </h1>
+        </div>
+
+        <h1 class="text-xl cursor-pointer absolute left-0 mt-4 border border-black px-8 py-2 text-black font-[GT]">
+            Inquire</h1>
     </div>
 
 </template>
@@ -76,6 +85,10 @@ export default {
         return {
             stamp: "",
             fade: false,
+            inquire: false,
+            titles: ["Pascals 0 & 1", "Detritus 0 & 1", "After Image 0 & 1", "Polyethylene 0 & 1", "Pyrolysis 0 & 1"],
+            links: [],
+            active: 0,
         }
     },
     methods: {
@@ -86,22 +99,31 @@ export default {
             }
             if (this.$refs.container.scrollTop > 0) {
                 this.fade = true;
+
+            }
+            if (this.$refs.container.scrollTop < window.innerHeight / 3) {
+                this.inquire = false;
             }
             if (this.$refs.container.scrollTop > window.innerHeight / 3) {
-
+                this.inquire = true;
                 this.$emit('sectionChange', 1);
+                this.active = 0
             }
             if (this.$refs.container.scrollTop > this.$refs.section1.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 2);
+                this.active = 1
             }
             if (this.$refs.container.scrollTop > this.$refs.section2.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 3);
+                this.active = 2
             }
             if (this.$refs.container.scrollTop > this.$refs.section3.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 4);
+                this.active = 3
             }
             if (this.$refs.container.scrollTop > this.$refs.section4.offsetTop - window.innerHeight / 1.3) {
                 this.$emit('sectionChange', 5);
+                this.active = 4
             }
         }
     },
@@ -109,7 +131,6 @@ export default {
         setTimeout(() => {
             this.stamp = "1654056634000";
         }, 1500)
-
     }
 }
 </script>
