@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Pascals0 from "../views/wall/pascals0.vue"
+import Pascals1 from "../views/wall/pascals1.vue"
 import PageNotFound from "../views/PageNotFound.vue";
 
 const routes = [
@@ -20,6 +21,15 @@ const routes = [
         meta: {
             friendlyName: "pascals0",
             title: "pascals0",
+        },
+    },
+    {
+        path: "/wall/pascals1",
+        name: "pascals1",
+        component: Pascals1,
+        meta: {
+            friendlyName: "pascals1",
+            title: "pascals1",
         },
     },
     { path: '/:pathMatch(.*)*', name: "404", component: PageNotFound },

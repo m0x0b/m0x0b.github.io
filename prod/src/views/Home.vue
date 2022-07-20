@@ -27,38 +27,48 @@
                 <router-link :to="links[0]">
                     <h1 class="text-center uppercase md:hidden">Pascals 0 & 1</h1>
                     <img src="/pieces/1-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                </router-link>
+                <router-link :to="links[1]">
                     <img src="/pieces/1-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
                     <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
                 </router-link>
             </div>
             <div ref="section1" class="mt-72">
-                <router-link :to="links[1]">
+                <router-link :to="links[2]">
                     <h1 class="text-center uppercase text-xl md:hidden">Detritus 0 & 1</h1>
                     <img src="/pieces/2-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                </router-link>
+                <router-link :to="links[3]">
                     <img src="/pieces/2-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
                     <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
                 </router-link>
             </div>
             <div ref="section2" class="mt-72">
-                <router-link :to="links[2]">
+                <router-link :to="links[4]">
                     <h1 class="text-center uppercase text-xl md:hidden">After Image 0 & 1</h1>
                     <img src="/pieces/3-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                </router-link>
+                <router-link :to="links[5]">
                     <img src="/pieces/3-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
                     <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
                 </router-link>
             </div>
             <div ref="section3" class="mt-72">
-                <router-link :to="links[3]">
+                <router-link :to="links[6]">
                     <h1 class="text-center uppercase text-xl md:hidden">Polyethylene 0 & 1</h1>
                     <img src="/pieces/4-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                </router-link>
+                <router-link :to="links[7]">
                     <img src="/pieces/4-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
                     <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
                 </router-link>
             </div>
             <div ref="section4" class="mt-72 mb-32 text-xl md:mb-0">
-                <router-link :to="links[4]">
+                <router-link :to="links[8]">
                     <h1 class="text-center uppercase md:hidden">Pyrolysis 0 & 1</h1>
                     <img src="/pieces/5-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                </router-link>
+                <router-link :to="links[9]">
                     <img src="/pieces/5-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
                     <h1 class="text-center uppercase text-xl md:hidden">Inquire</h1>
                 </router-link>
