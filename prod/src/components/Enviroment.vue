@@ -1,6 +1,7 @@
 <template>
-    <div id="container" class="top-[-50px] left-[-50px] fixed" style="z-index: -1" :class="'width-[' + width + 'px]', 'height-' + height + 'px]'"></div>
-    <div class="bg-white fixed top-0 left-0 w-screen h-full transition-all duration-[5s]"
+    <div id="container" class="top-[-50px] left-[-50px] fixed" style="z-index: -1"
+        :class="'width-[' + width + 'px]', 'height-' + height + 'px]'"></div>
+    <div class="bg-white fixed top-0 left-0 w-screen h-full transition-all duration-[4s]"
         :class="reveal ? 'opacity-0' : 'opacity-100'"></div>
 </template>
 
@@ -60,19 +61,19 @@ export default {
                 else this.prevScene()
                 this.curScene = val
                 */
-               //console.log(next, prev)
-               if (prev == 1 && next == 0) this.startCross();
-               if (prev == 0 && next == 1) this.stopCross();
+                //console.log(next, prev)
+                if (prev == 1 && next == 0) this.startCross();
+                if (prev == 0 && next == 1) this.stopCross();
 
-               if (prev == 1 && next == 2) this.nextScene();
-               if (prev == 2 && next == 3) this.nextScene();
-               if (prev == 3 && next == 4) this.nextScene();
-               if (prev == 4 && next == 5) this.nextScene();
+                if (prev == 1 && next == 2) this.nextScene();
+                if (prev == 2 && next == 3) this.nextScene();
+                if (prev == 3 && next == 4) this.nextScene();
+                if (prev == 4 && next == 5) this.nextScene();
 
-               if (prev == 2 && next == 1) this.prevScene();
-               if (prev == 3 && next == 2) this.prevScene();
-               if (prev == 4 && next == 3) this.prevScene();
-               if (prev == 5 && next == 4) this.prevScene();
+                if (prev == 2 && next == 1) this.prevScene();
+                if (prev == 3 && next == 2) this.prevScene();
+                if (prev == 4 && next == 3) this.prevScene();
+                if (prev == 5 && next == 4) this.prevScene();
             }
         },
     },
@@ -265,9 +266,9 @@ export default {
             if (this.width != window.innerWidth + 100) {
                 this.width = window.innerWidth + 100;
                 this.height = window.innerHeight + 100;
-                camera.aspect = this.width  / this.height;
+                camera.aspect = this.width / this.height;
                 camera.updateProjectionMatrix();
-                renderer.setSize(this.width , this.height);
+                renderer.setSize(this.width, this.height);
             }
         }
 
@@ -323,11 +324,12 @@ export default {
         revealScene() {
             setTimeout(() => {
                 this.reveal = true;
-            }, 2000);
+            }, 1500);
         },
         startCross() {
 
             // TODO:  Fix stransition
+
             let discSizeCurrent = { s: this.disc0.scale.x }
             let discSizeNew = { s: 0 }
             gsap.to(discSizeCurrent, {
@@ -336,12 +338,73 @@ export default {
                     this.disc0.scale.x = discSizeCurrent.s
                     this.disc0.scale.y = discSizeCurrent.s
                 },
-                duration: 2,
+                duration: 1.5,
                 ease: "power1.out",
                 onComplete: () => {
-                                this.cross.pause(); 
-            this.cross.restart();
+                    this.cross.pause();
+                    this.cross.restart();
                 }
+            });
+
+            this.disc1.scale.y  = 1;
+            this.disc1.scale.x = 1;
+
+            this.disc2.scale.y  = 1;
+            this.disc2.scale.x = 1;
+
+            this.disc3.scale.y  = 1;
+            this.disc3.scale.x = 1;
+
+            this.disc4.scale.y  = 1;
+            this.disc4.scale.x = 1;
+
+            let disc1SizeCurrent = { s: this.disc1.scale.y }
+            let disc1SizeNew = { s: Math.sin(Math.PI) / 2 }
+            gsap.to(disc1SizeCurrent, {
+                s: disc1SizeNew.s,
+                onUpdate: () => {
+                    this.disc1.scale.y = disc1SizeCurrent.s
+                },
+                duration: 1.5,
+                ease: "power1.out",
+            });
+
+
+
+            let disc2SizeCurrent = { s: this.disc2.scale.y }
+            let disc2SizeNew = { s: Math.sin(0) / 2 }
+            gsap.to(disc2SizeCurrent, {
+                s: disc2SizeNew.s,
+                onUpdate: () => {
+                    this.disc2.scale.y = disc2SizeCurrent.s
+                },
+                duration: 1.5,
+                ease: "power1.out",
+            });
+
+
+
+            let disc3SizeCurrent = { s: this.disc3.scale.x }
+            let disc3SizeNew = { s: Math.sin(Math.PI * 3) / 1.5 }
+            gsap.to(disc3SizeCurrent, {
+                s: disc3SizeNew.s,
+                onUpdate: () => {
+                    this.disc3.scale.x = disc3SizeCurrent.s
+                },
+                duration: 1.5,
+                ease: "power1.out",
+            });
+
+
+            let disc4SizeCurrent = { s: this.disc3.scale.x }
+            let disc4SizeNew = { s: Math.sin(Math.PI / 2) }
+            gsap.to(discSizeCurrent, {
+                s: disc4SizeNew.s,
+                onUpdate: () => {
+                    this.disc4.scale.x = disc4SizeCurrent.s
+                },
+                duration: 1.5,
+                ease: "power1.out",
             });
 
             // set gold to be 1/4 in transition then on complete restart cross.
@@ -356,13 +419,13 @@ export default {
                     this.disc0.scale.x = discSizeCurrent.s
                     this.disc0.scale.y = discSizeCurrent.s
                 },
-                duration: 2,
+                duration: 1.5,
                 ease: "power1.out",
                 onComplete: () => {
-                    this.cross.pause(); 
+                    this.cross.pause();
                 }
             });
-  
+
         },
         prevScene() {
             let d
@@ -389,7 +452,7 @@ export default {
                     d.scale.x = discSizeCurrent.s
                     d.scale.y = discSizeCurrent.s
                 },
-                duration: 2,
+                duration: 1.5,
                 ease: "power1.out"
             });
 
@@ -400,7 +463,7 @@ export default {
                 onUpdate: () => {
                     this.bloom.strength = bloomCurrent.s
                 },
-                duration: 3,
+                duration: 1.5,
                 ease: "power1.out"
             });
             this.curScene -= 1;
@@ -438,7 +501,7 @@ export default {
                     d.scale.x = discSizeCurrent.s
                     d.scale.y = discSizeCurrent.s
                 },
-                duration: 2,
+                duration: 1.5,
                 ease: "power1.in",
             });
             let bloomCurrent = { s: this.bloom.strength }
@@ -448,10 +511,9 @@ export default {
                 onUpdate: () => {
                     this.bloom.strength = bloomCurrent.s
                 },
-                duration: 3,
+                duration: 1.5,
                 ease: "power1.out",
             });
-            console.log(this.disc4.scale.x);
             this.curScene += 1;
         }
     },

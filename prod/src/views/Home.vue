@@ -21,32 +21,37 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2626<br />
     </p>
 
-
     <div class="absolute h-screen w-full overflow-y-scroll" @scroll="handleScroll" ref="container">
         <div class="w-full mt-[100vh]">
-            <div ref="section0">
-                <img src="/pieces/0-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/0-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/0-2.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/0-3.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/1-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/1-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+            <div ref="section0" class="flex flex-col white">
+                <h1 class="text-center uppercase md:hidden">Pascals 0 & 1</h1>
+                <img src="/pieces/1-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <img src="/pieces/1-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <h1 class="text-center uppercase md:hidden">Inquire</h1>
             </div>
-            <div ref="section1" class="mt-64 md:mt-72">
-                <img src="/pieces/2-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/2-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+            <div ref="section1" class="mt-72">
+                <h1 class="text-center uppercase md:hidden">Detritus 0 & 1</h1>
+                <img src="/pieces/2-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <img src="/pieces/2-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <h1 class="text-center uppercase md:hidden">Inquire</h1>
             </div>
-            <div ref="section2" class="mt-64 md:mt-72">
-                <img src="/pieces/3-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/3-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+            <div ref="section2" class="mt-72">
+                <h1 class="text-center uppercase md:hidden">After Image 0 & 1</h1>
+                <img src="/pieces/3-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <img src="/pieces/3-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <h1 class="text-center uppercase md:hidden">Inquire</h1>
             </div>
-            <div ref="section3" class="mt-64 md:mt-72">
-                <img src="/pieces/4-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/4-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+            <div ref="section3" class="mt-72">
+                <h1 class="text-center uppercase md:hidden">Polyethylene 0 & 1</h1>
+                <img src="/pieces/4-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <img src="/pieces/4-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <h1 class="text-center uppercase md:hidden">Inquire</h1>
             </div>
-            <div ref="section4" class="mt-64 md:mt-72">
-                <img src="/pieces/5-0.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
-                <img src="/pieces/5-1.jpg" class="w-[90%] md:w-[100vh] ml-auto" />
+            <div ref="section4" class="mt-72 mb-32 md:mb-0">
+                <h1 class="text-center uppercase md:hidden">Pyrolysis 0 & 1</h1>
+                <img src="/pieces/5-0.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <img src="/pieces/5-1.jpg" class="w-[78%] md:w-[100vh] mx-auto md:m-0" />
+                <h1 class="text-center uppercase md:hidden">Inquire</h1>
             </div>
         </div>
     </div>
