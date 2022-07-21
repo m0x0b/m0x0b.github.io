@@ -63,7 +63,7 @@
             </h2>
 
             <h1 class="mt-16 text-4xl uppercase">NULL IDEAL</h1>
-            <h2 class="uppercase font-[GT] tracking-tight mt-4">A precious metal, the element of kings. <br /> 
+            <h2 class="uppercase font-[GT] tracking-tight mt-4 pb-16">A precious metal, the element of kings. <br /> 
                 From the Earth it is mined, <br />  
                 and within our bodies it lies. <br /> 
                 A conductor of electricity, <br /> 
