@@ -1,5 +1,5 @@
 <template>
-    <div class="relative w-full h-screen top-0 left-0 bg-white bg-opacity-90 filter backdrop-blur-md overflow-y-scroll">
+    <div class="absolute w-full h-screen top-0 left-0 bg-white bg-opacity-50 filter backdrop-blur-md overflow-y-scroll">
         <div class="w-[90%] md:w-[600px] lg:w-[800px] mx-auto">
             <h1 class="mt-16 text-4xl uppercase">Introduction</h1>
             <h2 class="font-[GT] tracking-tight mt-4">NULL IDEAL, my second exhibition, represents a marked advancement in the detail,
