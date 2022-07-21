@@ -21,20 +21,21 @@
                     <h3 class="font-[GT]">Dimensions: 36" x 36"</h3>
                     <h3 class="font-[GT]">Medium: Print on Silk Canvas</h3>
                     <h3 class="font-[GT]">Status: No Owner</h3>
-                    <button class="mt-4 font-[GT] uppercase  border border-black px-8 py-2 mb-2">Inquire</button>
+                    <button class="mt-4 font-[GT] uppercase  border border-black px-8 py-2 mb-2"
+                        @click="inquire = true">Inquire</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <Inquire></Inquire>
+    <Inquire :active="inquire" @close="inquire = false" title="Pascals 0"></Inquire>
 
 </template>
 
 
 <script>
 import { RouterLink } from "vue-router";
-import Inquire  from "../../components/Inquire.vue";
+import Inquire from "../../components/Inquire.vue";
 
 export default {
     components: {
@@ -42,6 +43,7 @@ export default {
     },
     data() {
         return {
+            inquire: false,
         }
     }
 }

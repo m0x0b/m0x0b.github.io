@@ -12,7 +12,7 @@
 
                 <router-link :to="'/'">
                     <button
-                        class="absolute pb-48 bottom-0 lg:pb-0 pt-4 left-0 font-[GT] border-t border-[rgba(0,0,0,0.2)] h-16 w-full px-8 z-100 uppercase text-lg md:text-xl">View
+                        class="absolute pb-48 bottom-0 lg:pb-0 pt-4 left-0 lg:pt-0 font-[GT] border-t border-[rgba(0,0,0,0.2)] h-16 w-full px-8 z-100 uppercase text-lg md:text-xl">View
                         All Works</button>
                 </router-link>
                 <div class="py-24 pb-64 lg:py-0 lg:pb-0 px-4">
@@ -21,21 +21,29 @@
                     <h3 class="font-[GT]">Dimensions: 48" x 48"</h3>
                     <h3 class="font-[GT]">Medium: Print on Silk Canvas</h3>
                     <h3 class="font-[GT]">Status: No Owner</h3>
-                    <button class="mt-4 font-[GT] uppercase  border border-black px-8 py-2 mb-2">Inquire</button>
+                    <button class="mt-4 font-[GT] uppercase  border border-black px-8 py-2 mb-2" @click="inquire = true">Inquire</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <Inquire :active="inquire" @close="inquire = false" title="Polyethylene 1"></Inquire>
+
 </template>
+
 
 
 <script>
 import { RouterLink } from "vue-router";
+import Inquire from "../../components/Inquire.vue";
+
 export default {
+    components: {
+        Inquire
+    },
     data() {
         return {
-
+            inquire: false,
         }
     }
 }
