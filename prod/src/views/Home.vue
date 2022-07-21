@@ -96,9 +96,9 @@
     </div>
 
 
-
-    <h1 class="fixed top-4 right-4 p-1 text-4xl cursor-pointer border-black border rounded-full">?</h1>
-
+    <router-link :to="{name: 'about'}">
+        <h1 class="fixed top-4 right-4 p-1 text-4xl cursor-pointer border-black border rounded-full">?</h1>
+    </router-link>
 
 </template>
 

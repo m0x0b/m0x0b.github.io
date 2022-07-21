@@ -10,7 +10,8 @@ import Polyethylene1 from "../views/wall/polyethylene1.vue"
 import Polyethylene0 from "../views/wall/polyethylene0.vue"
 import Pyrolysis0 from "../views/wall/pyrolysis0.vue"
 import Pyrolysis1 from "../views/wall/pyrolysis1.vue"
-import PageNotFound from "../views/PageNotFound.vue";
+import PageNotFound from "../views/PageNotFound.vue"
+import About from "../views/About.vue"
 
 const routes = [
     {
@@ -20,6 +21,15 @@ const routes = [
         meta: {
             friendlyName: "Home",
             title: "home",
+        },
+    },
+    {
+        path: "/",
+        name: "about",
+        component: About,
+        meta: {
+            friendlyName: "About",
+            title: "about",
         },
     },
     {
