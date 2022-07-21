@@ -10,12 +10,12 @@
             <form action="https://formspree.io/f/xwkygbvg" class="w-[80vw] md:w-[500px]" method="POST" ref="form">
                 <label>
                     <p class="font-[GT] uppercase">Your email:</p>
-                    <input class="w-full border outline-none" type="email" name="email">
+                    <input class="w-full border outline-none" type="email" name="email" style="border-radius: 0 !important">
                 </label>
                 <br /> <br />
                 <label>
                     <p class="font-[GT] uppercase">Your message:</p>
-                    <textarea rows="5" v-model="message" class="w-full border outline-none" name="message"></textarea>
+                    <textarea rows="5" v-model="message" class="w-full border outline-none" name="message" style="border-radius: 0 !important"></textarea>
                 </label>
                 <br />
                 <br />
