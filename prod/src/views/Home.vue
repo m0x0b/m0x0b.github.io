@@ -21,14 +21,14 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2626<br />
     </p>
 
-    <h1 class="fixed top-4 right-4 p-1 text-4xl cursor-pointer border-black border rounded-full">?</h1>
     <div class="absolute h-screen w-full overflow-y-scroll" @scroll="handleScroll" ref="container">
 
         <div class="fixed right-0 top-1/2 transform -translate-y-1/2 hidden md:block uppercase transition-all duration-500 pointer-events-none"
             :class="inquire ? 'opacity-100 hidden' : 'opacity-0 visible'">
 
             <div class="pointer-events-none select-none">
-                <h1 v-for="(t, index) in titles" class=" text-2xl xl:text-5xl whitespace-nowrap transition-all duration-500"
+                <h1 v-for="(t, index) in titles"
+                    class=" text-2xl xl:text-5xl whitespace-nowrap transition-all duration-500"
                     :class="index == active ? 'opacity-100' : 'opacity-20'">
                     {{ t }}
                 </h1>
@@ -95,6 +95,9 @@
 
     </div>
 
+
+
+    <h1 class="fixed top-4 right-4 p-1 text-4xl cursor-pointer border-black border rounded-full">?</h1>
 
 
 </template>

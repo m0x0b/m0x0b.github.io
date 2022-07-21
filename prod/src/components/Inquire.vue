@@ -5,8 +5,9 @@
             <span class="absolute w-full h-px bg-black top-4"></span>
             <span class="absolute w-full h-px bg-black top-4 transform rotate-90"></span>
         </div>
+
         <div class="absolute left-1/2 top-20 md:top-24 transform -translate-x-1/2">
-            <form action="https://formspree.io/f/xwkygbvg" class="w-[80%] md:w-[500px]" method="POST" ref="form">
+            <form action="https://formspree.io/f/xwkygbvg" class="w-[80vw] md:w-[500px]" method="POST" ref="form">
                 <label>
                     <p class="font-[GT] uppercase">Your email:</p>
                     <input class="w-full border outline-none" type="email" name="email">
