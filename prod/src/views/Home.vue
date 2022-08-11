@@ -103,6 +103,21 @@
 </template>
 
 <script>
+
+
+/*
+
+TODOS: Optimize 3d enviroment fps
+Optimize scroll triggers 
+Fix bug with leaving main page
+Add bug images to about page
+Make map 
+Make public key encryption work
+Redirect m0x0b to nullideal
+
+*/
+
+
 import { RouterLink } from "vue-router";
 export default {
     name: "Home",

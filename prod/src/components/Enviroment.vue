@@ -87,7 +87,7 @@ export default {
 
         container = document.getElementById('container');
         renderer = new THREE.WebGLRenderer({ antialias: false });
-        renderer.setPixelRatio(window.devicePixelRatio * 0.51);
+        renderer.setPixelRatio(window.devicePixelRatio * 0.71);
         renderer.setSize(this.width, this.height);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         container.appendChild(renderer.domElement);
